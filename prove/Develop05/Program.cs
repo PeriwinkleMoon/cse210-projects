@@ -4,6 +4,12 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Develop05 World!");
+        GoalManager goalManager = new GoalManager();
+        
+        goalManager.Start();
+
+        Console.WriteLine("See you next time!");
+
+        // I've given up.
     }
 }
