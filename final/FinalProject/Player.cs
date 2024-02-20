@@ -68,7 +68,10 @@ public class Player
             return false;
         }
     }
-
+    public int GetWallet()
+    {
+        return _wallet;
+    }
 // SETTERS
     public void Purchase(Item i)
     {

@@ -9,7 +9,7 @@ class Program
         Introductory text
         Set random player 
         // */
-        // Console.Clear();
+        Console.Clear();
         Player pc = new Player();
         Console.WriteLine("Welcome to C# Dungeon Divers!\n\nHere's your starting gear:\n");
         pc.RollPC();

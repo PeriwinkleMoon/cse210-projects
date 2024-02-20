@@ -14,7 +14,7 @@ public class ShopEncounter : Encounter
     }
     public override void Start()
     {
-        // Console.Clear();
+        Console.Clear();
         Console.WriteLine("You enter a small but well lit room and see a nice looking man sitting\nwith a handful of items laid neatly on the floor in front of him.\nHe waves to you with a smile.\n");
         Thread.Sleep(1000);
         Console.WriteLine("HERMAN: Welcome adventurer! Care to browse my wares?\n");
@@ -25,6 +25,7 @@ public class ShopEncounter : Encounter
         {
             Console.WriteLine("######### HERMAN'S BAAZAR #########\n");
             int i = 1;
+            Console.WriteLine($"Your Wallet: {_player.GetWallet()}\n");
             foreach (Item item in _merchandise)
             {
                 Thread.Sleep(600);
@@ -65,6 +66,8 @@ public class ShopEncounter : Encounter
             }
         }
         Console.WriteLine("HERMAN: Leaving so soon? Well, good luck adventurer!");
+        Thread.Sleep(600);
+        Console.ReadLine();
     }
     private void Purchase(Item merch, int i)
     {
@@ -97,6 +100,7 @@ public class ShopEncounter : Encounter
                 }
                 else 
                 {
+                    Console.WriteLine("\nHERMAN: Thank your for you purchase!\n");
                     return;
                 }
             }

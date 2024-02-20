@@ -13,6 +13,8 @@ public class EnemyEncounter : Encounter
     {
         Enemy enemy = GetEnemy();
         Console.WriteLine($"A {_name} appears!");
+        Console.ReadLine();
+        // I have to go to bed now X_X
     }
     public Enemy GetEnemy()
     {
