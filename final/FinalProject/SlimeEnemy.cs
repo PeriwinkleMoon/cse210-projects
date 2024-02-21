@@ -6,16 +6,8 @@ public class SlimeEnemy : Enemy
     {
 
     }
-    public override void Attack()
+    public override int Drops() // How many coins it drops.
     {
-
-    }
-    public override void Defend()
-    {
-
-    }
-    public override void Drops()
-    {
-
+        return rnd.Next(1,4);
     }
 }

@@ -21,13 +21,17 @@ public class Player
     {
         _weapon = StarterWeapon();
         _wallet = StartWallet();
-        _health = 20;
+        _health = rnd.Next(10,20);
         _defense = 0;
 
         _weapon.GetStats();
+        Thread.Sleep(600);
         Console.WriteLine($"Wallet: {_wallet} coins");
+        Thread.Sleep(600);
         Console.WriteLine($"Health: {_health}");
+        Thread.Sleep(600);
         Console.WriteLine($"Defense: {_defense}");
+        Thread.Sleep(600);
     }
     private Item StarterWeapon()
         {
@@ -68,9 +72,53 @@ public class Player
             return false;
         }
     }
+    public int Defend(int atk)
+    {
+        int dmg = 0;
+        if (_defense != 0)
+        {
+            dmg = atk / _defense;
+        }
+        else
+        {
+            dmg = atk;
+        }
+        _health -= dmg;
+        return dmg;
+    }
+    public bool Attack(Enemy enemy)
+    {
+        int hit = rnd.Next(1,10);
+        if (hit <= 3)
+        {
+            return false;
+        }
+        else
+        {
+            enemy.Defend(_weapon.Attack());
+            return true;
+        }
+    }
+    public void UseItem(int i)
+    {
+        _inventory.RemoveAt(i);
+    }
+// GETTERS
     public int GetWallet()
     {
         return _wallet;
+    }
+    public int GetHealth()
+    {
+        return _health;
+    }
+    public string GetWeapon()
+    {
+        return _weapon.GetName();
+    }
+    public List<Item> GetInventory()
+    {
+        return _inventory;
     }
 // SETTERS
     public void Purchase(Item i)
@@ -91,9 +139,14 @@ public class Player
             _inventory.Add(i);
         }
     }
+    public void AddWallet(int i)
+    {
+        _wallet += i;
+    }
     public void AddHealth(int i)
     {
         _health += i;
-        Console.WriteLine($"Your health is now {_health}.");
+        Console.WriteLine($"Your health is now {_health}!");
     }
+    
 }

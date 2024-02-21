@@ -2,9 +2,10 @@ using System;
 
 public abstract class Enemy
 {
-    int _health;
-    int _attack;
-    int _defense;
+    protected int _health;
+    protected int _attack;
+    protected int _defense;
+    protected Random rnd = new Random();
 
     public Enemy(int hp, int atk, int def)
     {
@@ -12,7 +13,34 @@ public abstract class Enemy
         _attack = atk;
         _defense = def;
     }
-    public abstract void Attack();
-    public abstract void Defend();
-    public abstract void Drops();
+    public int Attack(Player pc)
+    {
+        int hit = rnd.Next(1,10);
+        if (hit <= 3)
+        {
+            return 0;
+        }
+        else
+        {
+
+            return pc.Defend(_attack);
+        }
+    }
+    public int Defend(int atk)
+    {
+        int mod = RandomNumber(1,2);
+        int dmg = atk / mod;
+        _health -= dmg;
+        return dmg;
+    }
+    public abstract int Drops();
+    public int GetHealth()
+    {
+        return _health;
+    }
+        public int RandomNumber(int lowerBound, int upperBound)
+    {
+        int rNum = rnd.Next(lowerBound, upperBound);
+        return rNum;
+    }
 }
